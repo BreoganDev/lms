@@ -3,8 +3,14 @@
 if (!defined('ABSPATH')) exit;
 
 // 🔹 Forzar inicio de sesión en `admin-ajax.php`
+<<<<<<< HEAD
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+=======
+if (!session_id()) {
+    session_start();
+    error_log("🔹 Sesión iniciada manualmente en functions.php");
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
 }
 
 // 🔹 Registrar Acciones para Procesar Pagos con AJAX
@@ -75,6 +81,54 @@ function breogan_procesar_pago_stripe_ajax() {
     }
 }
 
+<<<<<<< HEAD
+=======
+/** 🔹 Función para Procesar Pago con PayPal (AJAX) */
+function breogan_procesar_pago_paypal_ajax() {
+    error_log("🔹 PayPal AJAX ejecutado.");
+
+    if (!isset($_POST['curso_id']) || !isset($_POST['precio'])) {
+        error_log("❌ ERROR: Datos faltantes en AJAX PayPal.");
+        wp_send_json_error(['error' => 'Datos faltantes en AJAX PayPal.']);
+        exit;
+    }
+
+    $curso_id = intval($_POST['curso_id']);
+    $precio = floatval($_POST['precio']);
+
+    if ($curso_id <= 0) {
+        error_log("❌ ERROR: curso_id inválido.");
+        wp_send_json_error(['error' => 'Datos inválidos en PayPal.']);
+    }
+
+    $paypal_url = "https://www.sandbox.paypal.com/cgi-bin/webscr"; // Para pruebas
+    $business_email = "pequeinados@gmail.com"; // Cambia esto a tu cuenta Business real
+
+    $query_params = [
+        'cmd'            => '_xclick',
+        'business'       => $business_email,
+        'item_name'      => get_the_title($curso_id),
+        'amount'         => $precio,
+        'currency_code'  => 'EUR',
+        'return'         => home_url('/registro-usuario/?curso_id=' . $curso_id),
+        'cancel_return'  => get_permalink($curso_id) . '?pago=fallido',
+        'notify_url'     => home_url('/wp-json/breogan-lms/v1/paypal-ipn') // IPN para validación
+    ];
+
+    error_log("🔹 Parámetros enviados a PayPal: " . print_r($query_params, true));
+
+    $query_string = http_build_query($query_params);
+    $redirect_url = $paypal_url . '?' . $query_string;
+    
+    error_log("✅ Redirigiendo a PayPal: " . $redirect_url);
+    
+    wp_send_json_success(['redirect_url' => $redirect_url]);
+    exit;
+}
+
+
+
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
 
 
 /** 🔹 Función AJAX para Simular Compra (Prueba) */
@@ -103,6 +157,7 @@ function breogan_procesar_pago_ajax() {
 add_action('wp_ajax_breogan_procesar_pago_ajax', 'breogan_procesar_pago_ajax');
 add_action('wp_ajax_nopriv_breogan_procesar_pago_ajax', 'breogan_procesar_pago_ajax');
 
+<<<<<<< HEAD
 function breogan_paypal_ipn_handler() {
     // Registrar los datos recibidos
     error_log("🔹 Recibiendo IPN de PayPal");
@@ -174,6 +229,8 @@ add_action('rest_api_init', function () {
     ));
 });
 
+=======
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
 function breogan_registrar_usuario_tras_pago($email, $nombre, $curso_id) {
     error_log("🔹 Registrando usuario con email: $email");
 
@@ -236,6 +293,7 @@ function breogan_registrar_usuario_tras_pago($email, $nombre, $curso_id) {
     return $user_id;
 }
 
+<<<<<<< HEAD
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Amount;
@@ -348,3 +406,5 @@ function breogan_procesar_pago_paypal_ajax() {
 }
 add_action('wp_ajax_breogan_procesar_pago_paypal_ajax', 'breogan_procesar_pago_paypal_ajax');
 add_action('wp_ajax_nopriv_breogan_procesar_pago_paypal_ajax', 'breogan_procesar_pago_paypal_ajax');
+=======
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3

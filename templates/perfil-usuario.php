@@ -20,7 +20,11 @@ $user_id = get_current_user_id();
         <?php
         // Obtener todos los cursos en los que el usuario ha completado al menos una lección
         $cursos = get_posts(array(
+<<<<<<< HEAD
             'post_type'   => 'breogan_cursos',
+=======
+            'post_type'   => 'cursos',
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
             'numberposts' => -1
         ));
 
@@ -31,7 +35,11 @@ $user_id = get_current_user_id();
 
             // Obtener todas las lecciones de los temas de este curso
             $temas = get_posts(array(
+<<<<<<< HEAD
                 'post_type'   => 'breogan_temas',
+=======
+                'post_type'   => 'temas',
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
                 'meta_key'    => '_curso_relacionado',
                 'meta_value'  => $curso_id,
                 'numberposts' => -1
@@ -44,7 +52,11 @@ $user_id = get_current_user_id();
                 $tema_id = $tema->ID;
 
                 $lecciones = get_posts(array(
+<<<<<<< HEAD
                     'post_type'   => 'breogan_lecciones',
+=======
+                    'post_type'   => 'lecciones',
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
                     'meta_key'    => '_tema_relacionado',
                     'meta_value'  => $tema_id,
                     'numberposts' => -1

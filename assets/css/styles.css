@@ -1,0 +1,923 @@
+/**
+ * Estilos mejorados para Breogan LMS
+ * Diseño moderno, elegante y profesional
+ */
+
+:root {
+    /* Paleta de colores principal */
+    --breogan-primary: #6366F1;         /* Color principal - Indigo */
+    --breogan-primary-light: #A5B4FC;   /* Versión clara del color principal */
+    --breogan-primary-dark: #4F46E5;    /* Versión oscura del color principal */
+    
+    /* Colores secundarios */
+    --breogan-secondary: #10B981;       /* Color secundario - Verde esmeralda */
+    --breogan-secondary-light: #D1FAE5; /* Versión clara del secundario */
+    --breogan-secondary-dark: #059669;  /* Versión oscura del secundario */
+    
+    /* Colores neutros */
+    --breogan-white: #FFFFFF;
+    --breogan-light: #F9FAFB;
+    --breogan-gray-100: #F3F4F6;
+    --breogan-gray-200: #E5E7EB;
+    --breogan-gray-300: #D1D5DB;
+    --breogan-gray-400: #9CA3AF;
+    --breogan-gray-500: #6B7280;
+    --breogan-gray-600: #4B5563;
+    --breogan-gray-700: #374151;
+    --breogan-gray-800: #1F2937;
+    --breogan-gray-900: #111827;
+    --breogan-black: #000000;
+    
+    /* Colores de estado */
+    --breogan-success: #10B981;
+    --breogan-success-light: #D1FAE5;
+    --breogan-error: #EF4444;
+    --breogan-error-light: #FEE2E2;
+    --breogan-warning: #F59E0B;
+    --breogan-warning-light: #FEF3C7;
+    --breogan-info: #3B82F6;
+    --breogan-info-light: #DBEAFE;
+    
+    /* Dimensiones */
+    --breogan-radius-sm: 0.25rem;
+    --breogan-radius: 0.5rem;
+    --breogan-radius-lg: 0.75rem;
+    --breogan-radius-xl: 1rem;
+    
+    /* Sombras */
+    --breogan-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --breogan-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --breogan-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --breogan-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --breogan-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Fuentes */
+    --breogan-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --breogan-font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+    --breogan-font-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    
+    /* Transiciones */
+    --breogan-transition: all 0.2s ease-in-out;
+}
+
+/* Reseteo básico */
+.breogan-contenedor *,
+.breogan-contenedor *::before,
+.breogan-contenedor *::after {
+    box-sizing: border-box;
+}
+
+/* Contenedor principal */
+.breogan-contenedor {
+    font-family: var(--breogan-font-sans);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: var(--breogan-gray-800);
+    line-height: 1.6;
+    background-color: var(--breogan-white);
+    border-radius: var(--breogan-radius-lg);
+    box-shadow: var(--breogan-shadow-md);
+}
+
+/* Estilos de tipografía */
+.breogan-curso-titulo {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--breogan-gray-900);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.breogan-curso h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--breogan-gray-800);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--breogan-primary-light);
+    padding-bottom: 0.5rem;
+}
+
+.breogan-curso h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--breogan-gray-700);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.breogan-curso p {
+    margin-bottom: 1rem;
+    color: var(--breogan-gray-700);
+}
+
+/* Estilos para imágenes */
+.breogan-curso-imagen {
+    position: relative;
+    width: 25%; /* Reducido del 100% al 70% */
+    max-width: 600px; /* Ancho máximo para controlar el tamaño */
+    margin: 0 auto 2rem auto; /* Centrado horizontal con margen automático */
+    border-radius: var(--breogan-radius);
+    overflow: hidden;
+    box-shadow: var(--breogan-shadow-md);
+}
+
+.breogan-curso-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.breogan-curso-imagen:hover img {
+    transform: scale(1.02);
+}
+
+/* Contenido del curso */
+.breogan-curso-contenido {
+    background-color: var(--breogan-white);
+    padding: 2rem;
+    border-radius: var(--breogan-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--breogan-shadow-sm);
+}
+
+/* Mensajes */
+.mensaje-exito,
+.mensaje-error,
+.mensaje-info,
+.mensaje-warning {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--breogan-radius);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mensaje-exito {
+    background-color: var(--breogan-success-light);
+    color: var(--breogan-success);
+    border-left: 4px solid var(--breogan-success);
+}
+
+.mensaje-error {
+    background-color: var(--breogan-error-light);
+    color: var(--breogan-error);
+    border-left: 4px solid var(--breogan-error);
+}
+
+.mensaje-info {
+    background-color: var(--breogan-info-light);
+    color: var(--breogan-info);
+    border-left: 4px solid var(--breogan-info);
+}
+
+.mensaje-warning {
+    background-color: var(--breogan-warning-light);
+    color: var(--breogan-warning);
+    border-left: 4px solid var(--breogan-warning);
+}
+
+/* Panel de acceso al curso */
+.breogan-curso-acceso {
+    background-color: var(--breogan-white);
+    border-radius: var(--breogan-radius);
+    box-shadow: var(--breogan-shadow-md);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* Listado de temas */
+.breogan-lista-temas {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.breogan-lista-temas > li {
+    margin-bottom: 1.5rem;
+    background-color: var(--breogan-gray-100);
+    border-radius: var(--breogan-radius);
+    overflow: hidden;
+    transition: var(--breogan-transition);
+    box-shadow: var(--breogan-shadow-sm);
+}
+
+.breogan-lista-temas > li:hover {
+    box-shadow: var(--breogan-shadow-md);
+    transform: translateY(-2px);
+}
+
+.breogan-lista-temas > li > a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    color: var(--breogan-gray-800);
+    font-weight: 600;
+    text-decoration: none;
+    border-left: 4px solid var(--breogan-primary);
+    background-color: var(--breogan-gray-100);
+    transition: var(--breogan-transition);
+    font-size: 1.1rem;
+}
+
+.breogan-lista-temas > li > a:hover {
+    background-color: var(--breogan-gray-200);
+    color: var(--breogan-primary);
+}
+
+/* Listado de lecciones */
+.breogan-lista-lecciones {
+    list-style: none;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
+    background-color: var(--breogan-white);
+}
+
+.breogan-lista-lecciones li {
+    margin: 0.5rem 0;
+    border-radius: var(--breogan-radius-sm);
+    transition: var(--breogan-transition);
+}
+
+.breogan-lista-lecciones a {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: var(--breogan-gray-700);
+    text-decoration: none;
+    background-color: var(--breogan-gray-50);
+    border-radius: var(--breogan-radius-sm);
+    transition: var(--breogan-transition);
+    font-size: 1rem;
+}
+
+.breogan-lista-lecciones a:hover {
+    background-color: var(--breogan-gray-200);
+    color: var(--breogan-primary);
+}
+
+.leccion-completada a {
+    background-color: var(--breogan-success-light);
+    color: var(--breogan-success-dark);
+}
+
+.leccion-check {
+    margin-right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leccion-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: var(--breogan-primary);
+    color: white;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Panel de información de pago */
+.breogan-curso-pago {
+    background-color: var(--breogan-white);
+    border-radius: var(--breogan-radius);
+    box-shadow: var(--breogan-shadow-md);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.breogan-curso-info-pago {
+    margin-bottom: 1.5rem;
+}
+
+.breogan-curso-precio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--breogan-gray-900);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.curso-gratuito {
+    color: var(--breogan-success);
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--breogan-success-light);
+    padding: 0.5rem 1rem;
+    border-radius: var(--breogan-radius-sm);
+}
+
+.curso-gratuito::before {
+    content: "✓";
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Botones de pago */
+.breogan-botones-pago {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.breogan-btn-pago {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--breogan-radius);
+    transition: var(--breogan-transition);
+    cursor: pointer;
+    min-width: 200px;
+    flex: 1 1 auto;
+    border: none;
+}
+
+.breogan-stripe-btn {
+    background-color: #635BFF;
+    color: white;
+    box-shadow: var(--breogan-shadow-sm);
+}
+
+.breogan-stripe-btn:hover {
+    background-color: #5147E5;
+    box-shadow: var(--breogan-shadow-md);
+}
+
+.breogan-paypal-btn {
+    background-color: #0070BA;
+    color: white;
+    box-shadow: var(--breogan-shadow-sm);
+}
+
+.breogan-paypal-btn:hover {
+    background-color: #0057A0;
+    box-shadow: var(--breogan-shadow-md);
+}
+
+.breogan-btn-gratuito {
+    background-color: var(--breogan-success);
+    color: white;
+    box-shadow: var(--breogan-shadow-sm);
+}
+
+.breogan-btn-gratuito:hover {
+    background-color: var(--breogan-success-dark);
+    box-shadow: var(--breogan-shadow-md);
+}
+
+/* Botones de navegación */
+.breogan-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--breogan-radius);
+    transition: var(--breogan-transition);
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.breogan-btn-primary {
+    background-color: var(--breogan-primary);
+    color: white;
+}
+
+.breogan-btn-primary:hover {
+    background-color: var(--breogan-primary-dark);
+}
+
+.breogan-btn-secondary {
+    background-color: var(--breogan-secondary);
+    color: white;
+}
+
+.breogan-btn-secondary:hover {
+    background-color: var(--breogan-secondary-dark);
+}
+
+.breogan-btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--breogan-gray-300);
+    color: var(--breogan-gray-700);
+}
+
+.breogan-btn-outline:hover {
+    border-color: var(--breogan-primary);
+    color: var(--breogan-primary);
+}
+
+.breogan-btn-link {
+    background-color: transparent;
+    color: var(--breogan-primary);
+    padding: 0.375rem 0.75rem;
+}
+
+.breogan-btn-link:hover {
+    text-decoration: underline;
+    color: var(--breogan-primary-dark);
+}
+
+/* Navegación de lecciones */
+.breogan-navegacion-lecciones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--breogan-gray-200);
+}
+
+.breogan-btn-anterior,
+.breogan-btn-siguiente,
+.breogan-btn-tema {
+    background-color: var(--breogan-gray-100);
+    color: var(--breogan-gray-700);
+}
+
+.breogan-btn-anterior:hover,
+.breogan-btn-siguiente:hover,
+.breogan-btn-tema:hover {
+    background-color: var(--breogan-gray-200);
+    color: var(--breogan-gray-900);
+}
+
+/* Marcar como completada */
+.breogan-leccion-acciones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+#marcar-completada {
+    background-color: var(--breogan-success);
+    color: white;
+    transition: var(--breogan-transition);
+}
+
+#marcar-completada:hover {
+    background-color: var(--breogan-success-dark);
+}
+
+.breogan-leccion-estado {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    background-color: var(--breogan-success-light);
+    color: var(--breogan-success);
+    border-radius: var(--breogan-radius);
+    font-weight: 500;
+}
+
+/* Estilo para otras lecciones */
+.breogan-otras-lecciones {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: var(--breogan-gray-100);
+    border-radius: var(--breogan-radius);
+}
+
+.breogan-otras-lecciones h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--breogan-gray-800);
+    margin-bottom: 1rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .breogan-contenedor {
+        padding: 1.5rem;
+    }
+    
+    .breogan-curso-titulo {
+        font-size: 1.75rem;
+    }
+    
+    .breogan-botones-pago {
+        flex-direction: column;
+    }
+    
+    .breogan-navegacion-lecciones {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .breogan-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Animaciones y efectos adicionales */
+.breogan-curso-imagen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.breogan-curso-imagen:hover::after {
+    opacity: 1;
+}
+
+.breogan-curso-acceso .mensaje-exito {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mejoras adicionales para limpiar el diseño */
+.breogan-lista-temas > li:last-child {
+    margin-bottom: 0;
+}
+
+.breogan-lista-lecciones li:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilos para el fondo del sitio */
+body.breogan-lms-page {
+    background-color: var(--breogan-gray-100);
+}
+
+/* Ocultar textos de prueba y depuración */
+.dfdfdfdfdfdf,
+.sdffffff,
+.ghsfgsdgf {
+    display: none !important;
+}
+
+/* Estilos para iconos SVG inline */
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* Mejorar la alineación de iconos */
+.leccion-check .icon,
+.tema-header .icon {
+    margin-right: 0.25rem;
+}
+
+/* Mejorar la navegación de rutas (breadcrumbs) */
+.breogan-ruta-navegacion {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--breogan-gray-600);
+}
+
+.breogan-ruta-navegacion a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--breogan-gray-600);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breogan-ruta-navegacion a:hover {
+    color: var(--breogan-primary);
+}
+
+.breogan-ruta-navegacion .icon {
+    margin-right: 0.25rem;
+}
+
+.ruta-separador {
+    margin: 0 0.5rem;
+    color: var(--breogan-gray-400);
+}
+
+/* Mejorar los números de tema */
+.tema-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: var(--breogan-primary);
+    color: white;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.tema-header {
+    display: flex;
+    align-items: center;
+}
+
+.tema-contador {
+    margin-left: auto;
+    font-size: 0.8125rem;
+    color: var(--breogan-gray-500);
+    background-color: var(--breogan-gray-200);
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+}
+
+/* Mejora para botones de navegación */
+.breogan-navegacion-lecciones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--breogan-gray-200);
+}
+
+.breogan-btn-anterior,
+.breogan-btn-siguiente,
+.breogan-btn-tema {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--breogan-gray-100);
+    color: var(--breogan-gray-700);
+    border-radius: var(--breogan-radius);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.breogan-btn-anterior:hover,
+.breogan-btn-siguiente:hover,
+.breogan-btn-tema:hover {
+    background-color: var(--breogan-primary-light);
+    color: var(--breogan-primary-dark);
+}
+
+.breogan-btn-anterior .icon {
+    margin-right: 0.5rem;
+}
+
+.breogan-btn-siguiente .icon {
+    margin-left: 0.5rem;
+}
+
+.breogan-btn-tema .icon {
+    margin-right: 0.5rem;
+}
+
+/* Indicador de lección actual */
+.leccion-actual a {
+    background-color: var(--breogan-primary-light);
+    border-left: 3px solid var(--breogan-primary);
+}
+
+.leccion-actual-indicator {
+    display: inline-block;
+    padding: 0.125rem 0.375rem;
+    background-color: var(--breogan-primary);
+    color: white;
+    border-radius: 1rem;
+    font-size: 0.6875rem;
+    margin-left: 0.5rem;
+}
+
+/* Ocultar contenido de prueba */
+.sdg, .ghsfgsdgf, .sdffffffffffffff, .dfdfdfdfdfdfdfdf {
+    display: none !important;
+}
+
+/* Estilo consistente para botones de navegación */
+.breogan-btn-volver {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--breogan-gray-100);
+    color: var(--breogan-gray-700);
+    border-radius: var(--breogan-radius);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.breogan-btn-volver:hover {
+    background-color: var(--breogan-primary-light);
+    color: var(--breogan-primary-dark);
+}
+
+.breogan-btn-volver .icon {
+    margin-right: 0.5rem;
+}
+
+/* Estado procesando para botones */
+.breogan-btn.procesando {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Estilo para el botón Volver al curso */
+.breogan-btn-volver {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--breogan-gray-100);
+    color: var(--breogan-gray-700);
+    border-radius: var(--breogan-radius);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    margin: 1.5rem 0;
+    border: none;
+    cursor: pointer;
+}
+
+.breogan-btn-volver:hover {
+    background-color: var(--breogan-primary-light);
+    color: var(--breogan-primary-dark);
+}
+
+.breogan-btn-volver .icon {
+    margin-right: 0.5rem;
+}
+
+.breogan-navegacion {
+    margin: 1.5rem 0;
+}
+
+/* Corrección para quitar los estilos que estás viendo en la inspección */
+.breogan-btn-link {
+    background-color: transparent !important;
+    color: inherit !important;
+    padding: 0.75rem 1.25rem !important;
+}
+
+/* Sobrescribir estilos existentes */
+a.breogan-btn-volver {
+    background-color: var(--breogan-gray-100) !important;
+    color: var(--breogan-gray-700) !important;
+    padding: 0.75rem 1.25rem !important;
+    text-decoration: none !important;
+}
+
+a.breogan-btn-volver:hover {
+    background-color: var(--breogan-primary-light) !important;
+    color: var(--breogan-primary-dark) !important;
+}
+
+/* Estilos específicos para el botón Volver al curso */
+.breogan-volver-navegacion {
+    margin: 1.5rem 0;
+    display: block;
+}
+
+.breogan-volver-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f3f4f6;
+    color: #374151;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.breogan-volver-btn:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+.breogan-volver-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+/* Asegurarnos de que no hay conflictos con otros estilos */
+.breogan-volver-btn:link,
+.breogan-volver-btn:visited,
+.breogan-volver-btn:active {
+    color: #374151;
+    text-decoration: none;
+}
+
+.breogan-volver-curso {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f3f4f6;
+    color: #374151;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.breogan-volver-curso:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+.breogan-volver-curso .icon {
+    stroke-width: 2;
+    stroke: currentColor;
+}
+
+.breogan-navegacion .breogan-btn.breogan-btn-volver,
+.breogan-navegacion .breogan-btn-link.breogan-btn-volver {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background-color: #f3f4f6 !important;
+    color: #374151 !important;
+    padding: 10px 15px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.breogan-navegacion .breogan-btn.breogan-btn-volver:hover,
+.breogan-navegacion .breogan-btn-link.breogan-btn-volver:hover {
+    background-color: #e5e7eb !important;
+    color: #1f2937 !important;
+}
+
+.breogan-navegacion .breogan-btn-link.breogan-btn-volver .icon {
+    stroke-width: 2 !important;
+    stroke: currentColor !important;
+    margin-right: 8px !important;
+}
+
+/* Solución ultra-específica para el botón "Volver al curso" */
+body .breogan-navegacion a[href*="curso"],
+body .breogan-navegacion .breogan-btn-volver,
+body .breogan-navegacion .breogan-btn-link,
+body a[href*="curso"].breogan-btn-volver,
+body a[href*="curso"].breogan-btn-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background-color: #f3f4f6 !important;
+    color: #374151 !important;
+    padding: 10px 15px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid #e5e7eb !important;
+    margin: 10px 0 !important;
+}
+
+body .breogan-navegacion a[href*="curso"]:hover,
+body .breogan-navegacion .breogan-btn-volver:hover,
+body .breogan-navegacion .breogan-btn-link:hover,
+body a[href*="curso"].breogan-btn-volver:hover,
+body a[href*="curso"].breogan-btn-link:hover {
+    background-color: #e5e7eb !important;
+    color: #1f2937 !important;
+    text-decoration: none !important;
+}
+
+body .breogan-navegacion a[href*="curso"] .icon,
+body .breogan-navegacion .breogan-btn-volver .icon,
+body .breogan-navegacion .breogan-btn-link .icon,
+body a[href*="curso"].breogan-btn-volver .icon,
+body a[href*="curso"].breogan-btn-link .icon {
+    margin-right: 8px !important;
+    stroke-width: 2 !important;
+    stroke: currentColor !important;
+}

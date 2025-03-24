@@ -31,11 +31,17 @@ class Breogan_LMS_Shortcodes {
         // Iniciar buffer de salida
         ob_start();
         
+<<<<<<< HEAD
         // Argumentos para la consulta - Usar cursos o blms_curso dependiendo de la estructura actual
         $post_type = post_type_exists('blms_curso') ? 'blms_curso' : 'cursos';
         
         $args = array(
             'post_type' => $post_type,
+=======
+        // Argumentos para la consulta
+        $args = array(
+            'post_type' => 'blms_curso',
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
             'posts_per_page' => $atts['cantidad'],
             'orderby' => $atts['orderby'],
             'order' => $atts['order']
@@ -62,9 +68,12 @@ class Breogan_LMS_Shortcodes {
                 <?php while ($cursos->have_posts()) : $cursos->the_post(); 
                     $curso_id = get_the_ID();
                     $precio = get_post_meta($curso_id, '_blms_precio_curso', true);
+<<<<<<< HEAD
                     if (empty($precio)) {
                         $precio = get_post_meta($curso_id, '_breogan_precio_curso', true);
                     }
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
                 ?>
                     <div class="curso-item">
                         <a href="<?php the_permalink(); ?>">
@@ -106,6 +115,7 @@ class Breogan_LMS_Shortcodes {
      * @return string Contenido HTML
      */
     public function perfil_shortcode($atts) {
+<<<<<<< HEAD
     // Cargar estilos específicos para el perfil
     wp_enqueue_style(
         'breogan-perfil-styles',
@@ -367,11 +377,85 @@ class Breogan_LMS_Shortcodes {
     
     /**
      * Obtener cursos comprados por el usuario - Versión actualizada
+=======
+        // Si el usuario no está logueado, mostrar mensaje y formulario de login
+        if (!is_user_logged_in()) {
+            return $this->login_form_for_profile();
+        }
+        
+        // Iniciar buffer de salida
+        ob_start();
+        
+        // Obtener ID del usuario actual
+        $user_id = get_current_user_id();
+        $user = get_userdata($user_id);
+        
+        ?>
+        <div class="breogan-perfil-usuario">
+            <h1><?php _e('Mi Perfil', 'breogan-lms'); ?></h1>
+            
+            <div class="perfil-info">
+                <h2><?php _e('Información Personal', 'breogan-lms'); ?></h2>
+                <p><strong><?php _e('Nombre:', 'breogan-lms'); ?></strong> <?php echo esc_html($user->display_name); ?></p>
+                <p><strong><?php _e('Email:', 'breogan-lms'); ?></strong> <?php echo esc_html($user->user_email); ?></p>
+            </div>
+            
+            <div class="perfil-cursos">
+                <h2><?php _e('Mis Cursos', 'breogan-lms'); ?></h2>
+                
+                <?php
+                // Obtener cursos comprados
+                $cursos_comprados = $this->get_user_purchased_courses($user_id);
+                
+                if (!empty($cursos_comprados)) {
+                    echo '<ul class="lista-cursos">';
+                    
+                    foreach ($cursos_comprados as $curso) {
+                        // Obtener progreso
+                        $user_handler = new Breogan_LMS_User();
+                        $progreso = $user_handler->get_course_progress($user_id, $curso->ID);
+                        
+                        ?>
+                        <li>
+                            <h3><a href="<?php echo get_permalink($curso->ID); ?>"><?php echo get_the_title($curso->ID); ?></a></h3>
+                            <p><?php _e('Progreso:', 'breogan-lms'); ?> <?php echo $progreso['porcentaje']; ?>% <?php _e('completado', 'breogan-lms'); ?></p>
+                            <div class="progreso-barra">
+                                <div style="width:<?php echo $progreso['porcentaje']; ?>%"></div>
+                            </div>
+                            <p class="lecciones-info">
+                                <?php printf(
+                                    __('%d de %d lecciones completadas', 'breogan-lms'),
+                                    $progreso['lecciones_completadas'],
+                                    $progreso['total_lecciones']
+                                ); ?>
+                            </p>
+                        </li>
+                        <?php
+                    }
+                    
+                    echo '</ul>';
+                } else {
+                    echo '<p>' . __('No tienes cursos en progreso.', 'breogan-lms') . '</p>';
+                    echo '<p><a href="' . get_post_type_archive_link('blms_curso') . '" class="btn-breogan">' . __('Ver catálogo de cursos', 'breogan-lms') . '</a></p>';
+                }
+                ?>
+            </div>
+        </div>
+        <?php
+        
+        // Devolver contenido del buffer
+        return ob_get_clean();
+    }
+    
+    /**
+     * Obtener cursos comprados por el usuario
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
      * 
      * @param int $user_id ID del usuario
      * @return array Arreglo de objetos post
      */
     private function get_user_purchased_courses($user_id) {
+<<<<<<< HEAD
         global $wpdb;
         $curso_ids = array();
         
@@ -396,6 +480,16 @@ class Breogan_LMS_Shortcodes {
                 $curso_ids[] = $curso_id;
             } elseif (strpos($meta->meta_key, 'blms_curso_') === 0) {
                 $curso_id = intval(str_replace('blms_curso_', '', $meta->meta_key));
+=======
+        // Obtener todas las claves de meta del usuario
+        $user_meta_keys = get_user_meta($user_id);
+        $curso_ids = array();
+        
+        // Filtrar las claves que corresponden a cursos comprados
+        foreach ($user_meta_keys as $key => $value) {
+            if (strpos($key, 'blms_curso_') === 0 && $value[0] === 'comprado') {
+                $curso_id = intval(str_replace('blms_curso_', '', $key));
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
                 $curso_ids[] = $curso_id;
             }
         }
@@ -405,12 +499,18 @@ class Breogan_LMS_Shortcodes {
             return array();
         }
         
+<<<<<<< HEAD
         // Determine el tipo de post correcto
         $post_type = post_type_exists('blms_curso') ? 'blms_curso' : 'cursos';
         
         // Obtener posts de los cursos
         $cursos = get_posts(array(
             'post_type' => $post_type,
+=======
+        // Obtener posts de los cursos
+        $cursos = get_posts(array(
+            'post_type' => 'blms_curso',
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
             'post__in' => $curso_ids,
             'numberposts' => -1,
             'orderby' => 'title',
@@ -426,6 +526,7 @@ class Breogan_LMS_Shortcodes {
      * @return string Formulario HTML
      */
     private function login_form_for_profile() {
+<<<<<<< HEAD
     // Cargar estilos específicos para el perfil
     wp_enqueue_style(
         'breogan-perfil-styles',
@@ -437,10 +538,15 @@ class Breogan_LMS_Shortcodes {
     ob_start();
     ?>
     <div class="breogan-login-container">
+=======
+        ob_start();
+        ?>
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
         <div class="breogan-login-form">
             <h2><?php _e('Acceso a Mi Perfil', 'breogan-lms'); ?></h2>
             <p><?php _e('Por favor, inicia sesión para acceder a tu perfil y ver tu progreso en los cursos.', 'breogan-lms'); ?></p>
             
+<<<<<<< HEAD
             <form name="loginform" id="breogan-loginform" action="<?php echo esc_url(site_url('wp-login.php', 'login_post')); ?>" method="post">
                 <div class="login-field">
                     <label for="user_login"><?php _e('Usuario o Email', 'breogan-lms'); ?></label>
@@ -480,4 +586,32 @@ class Breogan_LMS_Shortcodes {
     
     return ob_get_clean();
 }
+=======
+            <?php
+            // Mostrar formulario de login de WordPress
+            echo wp_login_form(array(
+                'echo' => false,
+                'redirect' => get_permalink(),
+                'form_id' => 'breogan-loginform',
+                'label_username' => __('Usuario o Email', 'breogan-lms'),
+                'label_password' => __('Contraseña', 'breogan-lms'),
+                'label_remember' => __('Recordarme', 'breogan-lms'),
+                'label_log_in' => __('Iniciar Sesión', 'breogan-lms'),
+                'remember' => true
+            ));
+            ?>
+            
+            <p class="login-register-link">
+                <?php _e('¿No tienes cuenta?', 'breogan-lms'); ?> 
+                <a href="<?php echo wp_registration_url(); ?>"><?php _e('Regístrate', 'breogan-lms'); ?></a>
+            </p>
+            <p class="login-lostpassword-link">
+                <a href="<?php echo wp_lostpassword_url(); ?>"><?php _e('¿Olvidaste tu contraseña?', 'breogan-lms'); ?></a>
+            </p>
+        </div>
+        <?php
+        
+        return ob_get_clean();
+    }
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 }

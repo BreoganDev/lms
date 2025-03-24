@@ -920,6 +920,7 @@ body a[href*="curso"].breogan-btn-link .icon {
     margin-right: 8px !important;
     stroke-width: 2 !important;
     stroke: currentColor !important;
+<<<<<<< HEAD
 }
 
 .btn-pago.paypal-btn {
@@ -1432,4 +1433,6 @@ body.dark-mode {
 
 .breogan-curso p {
     color: black !important;
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 }

@@ -206,6 +206,7 @@ class Breogan_LMS_Metaboxes {
             }
         }
     }
+<<<<<<< HEAD
 }
 
 function breogan_lms_add_curso_metadatos() {
@@ -258,3 +259,6 @@ function breogan_lms_save_curso_metadatos($post_id) {
     }
 }
 add_action('save_post', 'breogan_lms_save_curso_metadatos');
+=======
+}
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858

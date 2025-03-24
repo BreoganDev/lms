@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 /**
  * Plugin Name: Breogan LMS
  * Description: Un plugin LMS personalizado para Escuela de Madres en WordPress.
@@ -6,6 +10,18 @@
  * Author: BreoganDev (Diego)
  * Text Domain: breogan-lms
  */
+<<<<<<< HEAD
+=======
+=======
+/*
+Plugin Name: Breogan LMS
+Description: Un plugin LMS personalizado para Escuela de Madres en WordPress.
+Version: 1.0
+Author: BreoganDev (Diego)
+Text Domain: breogan-lms
+*/
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 
 if (!defined('ABSPATH')) {
     exit; // Evita el acceso directo
@@ -14,6 +30,10 @@ if (!defined('ABSPATH')) {
 // Definir constantes
 define('BREOGAN_LMS_PATH', plugin_dir_path(__FILE__));
 define('BREOGAN_LMS_URL', plugin_dir_url(__FILE__));
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 define('BREOGAN_LMS_VERSION', '2.0');
 
 /**
@@ -49,6 +69,7 @@ class Breogan_LMS {
         require_once BREOGAN_LMS_PATH . 'includes/class-user.php';
         require_once BREOGAN_LMS_PATH . 'includes/class-admin.php';
         require_once BREOGAN_LMS_PATH . 'includes/class-payments.php';
+<<<<<<< HEAD
         require_once BREOGAN_LMS_PATH . 'includes/class-paypal.php'; // Nuevo archivo para PayPal
         require_once BREOGAN_LMS_PATH . 'includes/functions.php';
         require_once BREOGAN_LMS_PATH . 'includes/paypal-functions.php';
@@ -61,6 +82,11 @@ class Breogan_LMS {
         require_once BREOGAN_LMS_PATH . 'instructores/instructor-templates.php';
         require_once BREOGAN_LMS_PATH . 'instructores/instructor-shortcode.php';
 
+=======
+        require_once BREOGAN_LMS_PATH . 'includes/functions.php';
+        require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
+require_once BREOGAN_LMS_PATH . 'vendor/paypal/lib/autoload.php';
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
     }
     
     /**
@@ -75,14 +101,20 @@ class Breogan_LMS {
         new Breogan_LMS_User();
         new Breogan_LMS_Admin();
         new Breogan_LMS_Payments();
+<<<<<<< HEAD
         new Breogan_LMS_PayPal(); // Inicializar el componente de PayPal
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
         
         // Inicializar hooks generales
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
+<<<<<<< HEAD
         
         // Verificar pagos completados
         add_action('template_redirect', array($this, 'check_payment_return'));
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
     }
     
     /**
@@ -98,11 +130,14 @@ class Breogan_LMS {
         
         // Crear páginas necesarias
         $this->create_pages();
+<<<<<<< HEAD
         
         // Configurar opciones por defecto si no existen
         if (get_option('breogan_paypal_sandbox') === false) {
             update_option('breogan_paypal_sandbox', '1'); // Modo sandbox por defecto
         }
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
     }
     
     /**
@@ -116,6 +151,7 @@ class Breogan_LMS {
     /**
      * Enqueue scripts y estilos frontend
      */
+<<<<<<< HEAD
     public function enqueue_scripts() {
         // Estilos
         wp_enqueue_style(
@@ -148,6 +184,40 @@ class Breogan_LMS {
             'text_lesson_completed' => __('Lección completada', 'breogan-lms')
         ));
     }
+=======
+   public function enqueue_scripts() {
+    // Estilos
+    wp_enqueue_style(
+        'breogan-lms-styles', 
+        BREOGAN_LMS_URL . 'assets/css/styles.css', 
+        array(), 
+        BREOGAN_LMS_VERSION
+    );
+    
+    // Iconos Dashicons para frontend
+    wp_enqueue_style('dashicons');
+    
+    // Scripts
+    wp_enqueue_script(
+        'breogan-lms-scripts',
+        BREOGAN_LMS_URL . 'assets/js/scripts.js',
+        array('jquery'),
+        BREOGAN_LMS_VERSION,
+        true
+    );
+    
+    // Localizar variables para JS
+    wp_localize_script('breogan-lms-scripts', 'breoganLMS', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('breogan_lms_nonce'),
+        'text_processing' => __('Procesando...', 'breogan-lms'),
+        'text_free_access' => __('Acceder al Curso Gratuito', 'breogan-lms'),
+        'text_saving' => __('Guardando...', 'breogan-lms'),
+        'text_mark_complete' => __('Marcar como completada', 'breogan-lms'),
+        'text_lesson_completed' => __('Lección completada', 'breogan-lms')
+    ));
+}
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
     
     /**
      * Enqueue scripts y estilos admin
@@ -170,6 +240,7 @@ class Breogan_LMS {
     }
     
     /**
+<<<<<<< HEAD
      * Verificar retorno de pago
      */
     public function check_payment_return() {
@@ -226,6 +297,8 @@ class Breogan_LMS {
     }
     
     /**
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
      * Crear páginas necesarias
      */
     private function create_pages() {
@@ -262,6 +335,7 @@ function breogan_lms_init() {
     new Breogan_LMS();
 }
 add_action('plugins_loaded', 'breogan_lms_init');
+<<<<<<< HEAD
 
 /**
  * Cargar estilos para la página de perfil
@@ -326,3 +400,129 @@ function breogan_lms_enqueue_theme_script() {
     );
 }
 add_action('wp_enqueue_scripts', 'breogan_lms_enqueue_theme_script');
+=======
+=======
+
+// Cargar archivos necesarios
+require_once BREOGAN_LMS_PATH . 'includes/post-types.php';
+require_once BREOGAN_LMS_PATH . 'includes/shortcodes.php';
+require_once BREOGAN_LMS_PATH . 'includes/functions.php';
+require_once BREOGAN_LMS_PATH . 'includes/admin-menu.php';
+require_once BREOGAN_LMS_PATH . 'includes/metaboxes.php';
+
+function breogan_lms_override_templates($template) {
+    if (is_singular('cursos')) {
+        return BREOGAN_LMS_PATH . 'templates/single-cursos.php';
+    }
+    if (is_singular('temas')) {
+        return BREOGAN_LMS_PATH . 'templates/single-temas.php';
+    }
+    if (is_singular('lecciones')) {
+        return BREOGAN_LMS_PATH . 'templates/single-lecciones.php';
+    }
+    return $template;
+}
+add_filter('single_template', 'breogan_lms_override_templates');
+
+
+
+// Encolar scripts y estilos
+function breogan_lms_enqueue_scripts() {
+    wp_enqueue_script('jquery'); // Asegurar que jQuery se carga correctamente
+    wp_enqueue_style('breogan-lms-style', BREOGAN_LMS_URL . 'assets/css/style.css', array(), '1.0');
+    wp_enqueue_script('breogan-lms-script', BREOGAN_LMS_URL . 'assets/js/script.js', array('jquery'), '1.0', true);
+    
+    // Localizar AJAX para que el script pueda acceder a admin-ajax.php
+    wp_localize_script('breogan-lms-script', 'breoganLMS', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
+}
+add_action('wp_enqueue_scripts', 'breogan_lms_enqueue_scripts');
+
+// Stripe y Paypal
+function breogan_lms_configuracion_menu() {
+    add_options_page(
+        'Breogan LMS - Pagos',
+        'Breogan LMS - Pagos',
+        'manage_options',
+        'breogan-lms-pagos',
+        'breogan_lms_pagos_configuracion'
+    );
+}
+add_action('admin_menu', 'breogan_lms_configuracion_menu');
+
+function breogan_lms_pagos_configuracion() {
+    ?>
+    <div class="wrap">
+        <h1>Configuración de Pagos - Breogan LMS</h1>
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('breogan_lms_pagos');
+            do_settings_sections('breogan-lms-pagos');
+            submit_button();
+            ?>
+        </form>
+    </div>
+    <?php
+}
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+
+function breogan_lms_registrar_configuracion() {
+    register_setting('breogan_lms_pagos', 'breogan_stripe_public_key');
+    register_setting('breogan_lms_pagos', 'breogan_stripe_secret_key');
+    register_setting('breogan_lms_pagos', 'breogan_paypal_client_id');
+    register_setting('breogan_lms_pagos', 'breogan_paypal_secret');
+
+    add_settings_section('breogan_lms_stripe', 'Configuración de Stripe', null, 'breogan-lms-pagos');
+    add_settings_field('breogan_stripe_public_key', 'Clave Pública de Stripe', 'breogan_stripe_public_key_callback', 'breogan-lms-pagos', 'breogan_lms_stripe');
+    add_settings_field('breogan_stripe_secret_key', 'Clave Secreta de Stripe', 'breogan_stripe_secret_key_callback', 'breogan-lms-pagos', 'breogan_lms_stripe');
+
+    add_settings_section('breogan_lms_paypal', 'Configuración de PayPal', null, 'breogan-lms-pagos');
+    add_settings_field('breogan_paypal_client_id', 'Client ID de PayPal', 'breogan_paypal_client_id_callback', 'breogan-lms-pagos', 'breogan_lms_paypal');
+    add_settings_field('breogan_paypal_secret', 'Clave Secreta de PayPal', 'breogan_paypal_secret_callback', 'breogan-lms-pagos', 'breogan_lms_paypal');
+<<<<<<< HEAD
+    
+    function breogan_stripe_public_key_callback() {
+    $valor = get_option('breogan_stripe_public_key', '');
+    echo "<input type='text' name='breogan_stripe_public_key' value='" . esc_attr($valor) . "' class='regular-text'>";
+=======
+}
+add_action('admin_init', 'breogan_lms_registrar_configuracion');
+
+function breogan_stripe_public_key_callback() {
+    $valor = get_option('breogan_stripe_public_key', '');
+    echo "<input type='text' name='breogan_stripe_public_key' value='$valor' class='regular-text'>";
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+}
+
+function breogan_stripe_secret_key_callback() {
+    $valor = get_option('breogan_stripe_secret_key', '');
+<<<<<<< HEAD
+    echo "<input type='password' name='breogan_stripe_secret_key' value='" . esc_attr($valor) . "' class='regular-text'>";
+=======
+    echo "<input type='text' name='breogan_stripe_secret_key' value='$valor' class='regular-text'>";
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+}
+
+function breogan_paypal_client_id_callback() {
+    $valor = get_option('breogan_paypal_client_id', '');
+<<<<<<< HEAD
+    echo "<input type='text' name='breogan_paypal_client_id' value='" . esc_attr($valor) . "' class='regular-text'>";
+=======
+    echo "<input type='text' name='breogan_paypal_client_id' value='$valor' class='regular-text'>";
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+}
+
+function breogan_paypal_secret_callback() {
+    $valor = get_option('breogan_paypal_secret', '');
+<<<<<<< HEAD
+    echo "<input type='password' name='breogan_paypal_secret' value='" . esc_attr($valor) . "' class='regular-text'>";
+}
+}
+add_action('admin_init', 'breogan_lms_registrar_configuracion');
+=======
+    echo "<input type='text' name='breogan_paypal_secret' value='$valor' class='regular-text'>";
+}
+
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858

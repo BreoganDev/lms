@@ -1,6 +1,19 @@
 {
     "require": {
+<<<<<<< HEAD
         "stripe/stripe-php": "^16.5",
         "paypal/rest-api-sdk-php": "*"
     }
 }
+=======
+<<<<<<< HEAD
+        "stripe/stripe-php": "^16.5",
+        "paypal/rest-api-sdk-php": "*"
+    }
+}
+=======
+        "stripe/stripe-php": "^16.5"
+    }
+}
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858

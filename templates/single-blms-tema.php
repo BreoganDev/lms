@@ -19,8 +19,19 @@ $user_id = get_current_user_id();
 $curso_id = get_post_meta($tema_id, '_blms_curso_relacionado', true);
 
 // Verificar si el usuario tiene acceso
+<<<<<<< HEAD
+// Verificar con ambos prefijos
+$ha_comprado_blms = get_user_meta($user_id, 'blms_curso_' . $curso_id, true);
+$ha_comprado_breogan = get_user_meta($user_id, 'breogan_curso_' . $curso_id, true);
+$ha_comprado_curso = ($ha_comprado_blms === 'comprado' || $ha_comprado_breogan === 'comprado');
+
+$ha_acceso_tema_blms = get_user_meta($user_id, 'blms_tema_' . $tema_id, true);
+$ha_acceso_tema_breogan = get_user_meta($user_id, 'breogan_tema_' . $tema_id, true);
+$ha_acceso_tema = ($ha_acceso_tema_blms === 'acceso' || $ha_acceso_tema_breogan === 'acceso');
+=======
 $ha_comprado_curso = get_user_meta($user_id, 'blms_curso_' . $curso_id, true) === 'comprado';
 $ha_acceso_tema = get_user_meta($user_id, 'blms_tema_' . $tema_id, true) === 'acceso';
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 
 // Verificar acceso
 if (!$ha_comprado_curso && !$ha_acceso_tema) {
@@ -180,4 +191,13 @@ if (!$ha_comprado_curso && !$ha_acceso_tema) {
     </article>
 </main>
 
+<<<<<<< HEAD
+<style>
+    h2 {
+        color: black;
+    }
+</style>
+
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 <?php get_footer(); ?>

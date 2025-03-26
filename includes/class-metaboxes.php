@@ -206,4 +206,59 @@ class Breogan_LMS_Metaboxes {
             }
         }
     }
+<<<<<<< HEAD
 }
+
+function breogan_lms_add_curso_metadatos() {
+    add_meta_box(
+        'breogan_lms_curso_metadatos',
+        __('Información Adicional del Curso', 'breogan-lms'),
+        'breogan_lms_curso_metadatos_callback',
+        'blms_curso',
+        'side',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'breogan_lms_add_curso_metadatos');
+
+function breogan_lms_curso_metadatos_callback($post) {
+    // Instructor
+    $instructor = get_post_meta($post->ID, '_blms_instructor_curso', true);
+    echo '<label>Instructor:</label>';
+    echo '<input type="text" name="blms_instructor_curso" value="' . esc_attr($instructor) . '" class="widefat">';
+
+    // Duración
+    $duration = get_post_meta($post->ID, '_blms_duracion_curso', true);
+    echo '<label>Duración (horas):</label>';
+    echo '<input type="number" name="blms_duracion_curso" value="' . esc_attr($duration) . '" class="widefat">';
+
+    // Nivel
+    $level = get_post_meta($post->ID, '_blms_nivel_curso', true);
+    echo '<label>Nivel:</label>';
+    echo '<select name="blms_nivel_curso" class="widefat">';
+    echo '<option value="beginner" ' . selected($level, 'beginner', false) . '>Principiante</option>';
+    echo '<option value="intermediate" ' . selected($level, 'intermediate', false) . '>Intermedio</option>';
+    echo '<option value="advanced" ' . selected($level, 'advanced', false) . '>Avanzado</option>';
+    echo '<option value="all-levels" ' . selected($level, 'all-levels', false) . '>Todos los niveles</option>';
+    echo '</select>';
+}
+
+function breogan_lms_save_curso_metadatos($post_id) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    if (isset($_POST['blms_instructor_curso'])) {
+        update_post_meta($post_id, '_blms_instructor_curso', sanitize_text_field($_POST['blms_instructor_curso']));
+    }
+
+    if (isset($_POST['blms_duracion_curso'])) {
+        update_post_meta($post_id, '_blms_duracion_curso', sanitize_text_field($_POST['blms_duracion_curso']));
+    }
+
+    if (isset($_POST['blms_nivel_curso'])) {
+        update_post_meta($post_id, '_blms_nivel_curso', sanitize_text_field($_POST['blms_nivel_curso']));
+    }
+}
+add_action('save_post', 'breogan_lms_save_curso_metadatos');
+=======
+}
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858

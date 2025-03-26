@@ -1,0 +1,548 @@
+/* 
+ * Estilos modernos para la página de perfil (mi-perfil)
+ * Diseño moderno, profesional e innovador
+ */
+
+/* Variables para personalización */
+:root {
+    /* Esquema de colores - puedes personalizarlo */
+    --primary: #6366F1;           /* Color principal */
+    --primary-light: #a5b4fc;     /* Versión clara del color principal */
+    --primary-dark: #4F46E5;      /* Versión oscura del color principal */
+    --secondary: #22c55e;         /* Color secundario/acento */
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+    
+    /* Bordes y radios */
+    --border-radius-sm: 0.25rem;
+    --border-radius: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-radius-xl: 1rem;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Contenedor principal de perfil */
+.breogan-perfil-usuario {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: var(--gray-700);
+    line-height: 1.6;
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Cabecera del perfil */
+.breogan-perfil-header {
+    margin-bottom: 2.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.breogan-perfil-usuario h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+}
+
+.breogan-perfil-usuario h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: var(--primary);
+    border-radius: 4px;
+}
+
+/* Secciones principales */
+.breogan-perfil-seccion {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.breogan-perfil-seccion:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.breogan-perfil-seccion h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--gray-200);
+    position: relative;
+}
+
+.breogan-perfil-seccion h2::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background-color: var(--primary);
+}
+
+/* Tarjetas de cursos */
+.lista-cursos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-cursos li {
+    background: var(--gray-50);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.lista-cursos li:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.lista-cursos h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--primary);
+    color: white;
+}
+
+.lista-cursos h3 a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.curso-contenido {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barra de progreso */
+.progreso-barra {
+    width: 100%;
+    height: 10px;
+    background: var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+}
+
+.progreso-barra div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.lecciones-info {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.curso-acciones {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.btn-acceder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-acceder:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-acceder svg {
+    margin-left: 0.5rem;
+    width: 16px;
+    height: 16px;
+}
+
+/* Información del usuario */
+.perfil-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.perfil-info-card {
+    background: var(--gray-50);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.perfil-info-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.info-item {
+    margin-bottom: 0.75rem;
+}
+
+.info-item strong {
+    display: inline-block;
+    min-width: 120px;
+    color: var(--gray-700);
+}
+
+/* Estado de los cursos */
+.estado-indicador {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.estado-activo {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.estado-pendiente {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.estado-completado {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--info);
+}
+
+/* Sin cursos mensaje */
+.no-cursos {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--gray-500);
+}
+
+.no-cursos svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    color: var(--gray-400);
+}
+
+.no-cursos h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.btn-explorar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.btn-explorar:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Sección de estadísticas */
+.perfil-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.estadistica-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.estadistica-card:hover {
+    transform: translateY(-5px);
+}
+
+.estadistica-valor {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.estadistica-label {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.breogan-perfil-usuario {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.lista-cursos li {
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.lista-cursos li:nth-child(1) { animation-delay: 0.1s; }
+.lista-cursos li:nth-child(2) { animation-delay: 0.2s; }
+.lista-cursos li:nth-child(3) { animation-delay: 0.3s; }
+.lista-cursos li:nth-child(4) { animation-delay: 0.4s; }
+.lista-cursos li:nth-child(5) { animation-delay: 0.5s; }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .breogan-perfil-usuario {
+        padding: 1.5rem;
+    }
+    
+    .breogan-perfil-seccion {
+        padding: 1.5rem;
+    }
+    
+    .lista-cursos {
+        grid-template-columns: 1fr;
+    }
+    
+    .perfil-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .perfil-estadisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .breogan-perfil-usuario {
+        background-color: var(--gray-900);
+        color: var(--gray-300);
+    }
+    
+    .breogan-perfil-usuario h1 {
+        color: white;
+    }
+    
+    .breogan-perfil-seccion {
+        background-color: var(--gray-800);
+    }
+    
+    .breogan-perfil-seccion h2 {
+        color: var(--gray-100);
+        border-bottom-color: var(--gray-700);
+    }
+    
+    .lista-cursos li {
+        background-color: var(--gray-800);
+    }
+    
+    .progreso-barra {
+        background-color: var(--gray-700);
+    }
+    
+    .perfil-info-card {
+        background-color: var(--gray-800);
+    }
+    
+    .perfil-info-card h3 {
+        color: var(--gray-200);
+        border-bottom-color: var(--gray-700);
+    }
+    
+    .estadistica-card {
+        background-color: var(--gray-800);
+    }
+    
+    .estadistica-label {
+        color: var(--gray-400);
+    }
+}
+
+/* Estilos para el formulario de login */
+.breogan-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem;
+}
+
+.breogan-login-form {
+    width: 100%;
+    max-width: 420px;
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 2.5rem;
+}
+
+.breogan-login-form h2 {
+    font-size: 1.5rem;
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.breogan-login-form p {
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.login-field {
+    margin-bottom: 1.25rem;
+}
+
+.login-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.login-field input[type="text"],
+.login-field input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-field input[type="text"]:focus,
+.login-field input[type="password"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    outline: none;
+}
+
+.login-remember {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    color: var(--gray-700);
+}
+
+.login-remember input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.login-submit {
+    margin-bottom: 1.5rem;
+}
+
+.login-submit input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-submit input[type="submit"]:hover {
+    background-color: var(--primary-dark);
+}
+
+.login-links {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.login-links a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-links a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}

@@ -364,6 +364,63 @@ class Breogan_LMS_Payments {
      * @param int $curso_id ID del curso
      */
     public function register_course_purchase($user_id, $curso_id) {
+<<<<<<< HEAD
+    // Marcar el curso como comprado (ambos prefijos)
+    update_user_meta($user_id, 'blms_curso_' . $curso_id, 'comprado');
+    update_user_meta($user_id, 'breogan_curso_' . $curso_id, 'comprado');
+    
+    // Obtener temas relacionados con el curso (verificar ambos métodos)
+    $temas = get_posts(array(
+        'post_type' => 'blms_tema',
+        'meta_key' => '_blms_curso_relacionado',
+        'meta_value' => $curso_id,
+        'numberposts' => -1
+    ));
+    
+    // Si no hay temas con el nuevo tipo de post, intentar con el antiguo
+    if (empty($temas)) {
+        $temas = get_posts(array(
+            'post_type' => 'temas',
+            'meta_key' => '_curso_relacionado',
+            'meta_value' => $curso_id,
+            'numberposts' => -1
+        ));
+    }
+    
+    // Dar acceso a todos los temas
+    foreach ($temas as $tema) {
+        // Guardar con ambos prefijos
+        update_user_meta($user_id, 'blms_tema_' . $tema->ID, 'acceso');
+        update_user_meta($user_id, 'breogan_tema_' . $tema->ID, 'acceso');
+        
+        // Obtener lecciones relacionadas con el tema (verificar ambos métodos)
+        $lecciones = get_posts(array(
+            'post_type' => 'blms_leccion',
+            'meta_key' => '_blms_tema_relacionado',
+            'meta_value' => $tema->ID,
+            'numberposts' => -1
+        ));
+        
+        // Si no hay lecciones con el nuevo tipo de post, intentar con el antiguo
+        if (empty($lecciones)) {
+            $lecciones = get_posts(array(
+                'post_type' => 'lecciones',
+                'meta_key' => '_tema_relacionado',
+                'meta_value' => $tema->ID,
+                'numberposts' => -1
+            ));
+        }
+        
+        // Dar acceso a todas las lecciones
+        foreach ($lecciones as $leccion) {
+            // Guardar con ambos prefijos
+            update_user_meta($user_id, 'blms_leccion_' . $leccion->ID, 'acceso');
+            update_user_meta($user_id, 'breogan_leccion_' . $leccion->ID, 'acceso');
+        }
+    }
+    return true;
+}
+=======
         // Marcar el curso como comprado
         update_user_meta($user_id, 'blms_curso_' . $curso_id, 'comprado');
         
@@ -394,4 +451,5 @@ class Breogan_LMS_Payments {
         }
         return true;
     }
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
 }

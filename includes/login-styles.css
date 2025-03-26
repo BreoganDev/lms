@@ -1,0 +1,214 @@
+:root {
+        /* Light Mode Colors */
+        --login-bg-light: #f4f6f9;
+        --login-card-bg-light: #ffffff;
+        --login-text-light: #2c3e50;
+        --login-input-bg-light: #ecf0f1;
+        --login-input-border-light: #bdc3c7;
+        --login-btn-bg-light: #3498db;
+        --login-btn-hover-light: #2980b9;
+
+        /* Dark Mode Colors */
+        --login-bg-dark: #121212;
+        --login-card-bg-dark: #1e1e1e;
+        --login-text-dark: #e0e0e0;
+        --login-input-bg-dark: #2c2c2c;
+        --login-input-border-dark: #444;
+        --login-btn-bg-dark: #4a90e2;
+        --login-btn-hover-dark: #3a7bd5;
+    }
+
+    /* Global Styles */
+    .breogan-login-container {
+        max-width: 450px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: var(--login-card-bg-light);
+        border-radius: 16px;
+        box-shadow: 
+            0 10px 25px rgba(0,0,0,0.1), 
+            0 6px 10px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Login Container Decoration */
+.breogan-login-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg, 
+        #3498db 0%, 
+        #2ecc71 50%, 
+        #e74c3c 100%
+    );
+    transform: rotate(-45deg);
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* Form Styles */
+.breogan-login-container .form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.breogan-login-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--login-text-light);
+    transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .breogan-login-container label {
+        color: var(--login-text-dark);
+    }
+}
+
+.breogan-login-container input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--login-input-border-light);
+    border-radius: 8px;
+    background-color: var(--login-input-bg-light);
+    color: var(--login-text-light);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .breogan-login-container input {
+        background-color: var(--login-input-bg-dark);
+        border-color: var(--login-input-border-dark);
+        color: var(--login-text-dark);
+    }
+}
+
+.breogan-login-container input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.breogan-login-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--login-btn-bg-light);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.breogan-login-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg, 
+        transparent, 
+        rgba(255,255,255,0.3), 
+        transparent
+    );
+    transition: all 0.3s ease;
+}
+
+.breogan-login-btn:hover::before {
+    left: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+    .breogan-login-btn {
+        background-color: var(--login-btn-bg-dark);
+    }
+}
+
+.breogan-login-btn:hover {
+    background-color: var(--login-btn-hover-light);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Messages */
+.breogan-login-messages {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.success-message {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Login Links */
+.breogan-login-links {
+    margin-top: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.breogan-login-links a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.breogan-login-links a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #3498db;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.breogan-login-links a:hover::after {
+    transform: scaleX(1);
+}
+
+@media (prefers-color-scheme: dark) {
+    .breogan-login-links a {
+        color: #4a90e2;
+    }
+    .breogan-login-links a::after {
+        background-color: #4a90e2;
+    }
+}
+    
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+        .breogan-login-container {
+            width: 95%;
+            margin: 30px auto;
+            padding: 25px;
+        }
+    }

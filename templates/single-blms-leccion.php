@@ -7,10 +7,16 @@
 
 get_header();
 
+<<<<<<< HEAD
 // Verificar si el usuario está logueado (pero permitir administradores)
 if (!is_user_logged_in() && !current_user_can('administrator')) {
     echo '<p style="color:red; font-weight:bold;">🔴 Usuario no logueado. Redirigiendo...</p>';
     echo '<script>window.location.href = "' . wp_login_url(get_permalink()) . '";</script>';
+=======
+// Verificar si el usuario está logueado
+if (!is_user_logged_in()) {
+    wp_redirect(wp_login_url(get_permalink()));
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     exit();
 }
 

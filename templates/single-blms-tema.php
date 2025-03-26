@@ -7,10 +7,16 @@
 
 get_header();
 
+<<<<<<< HEAD
 // Verificar si el usuario está logueado (pero permitir administradores)
 if (!is_user_logged_in() && !current_user_can('administrator')) {
     echo '<p style="color:red; font-weight:bold;">🔴 Usuario no logueado. Redirigiendo...</p>';
     echo '<script>window.location.href = "' . wp_login_url(get_permalink()) . '";</script>';
+=======
+// Verificar si el usuario está logueado
+if (!is_user_logged_in()) {
+    wp_redirect(wp_login_url(get_permalink()));
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     exit();
 }
 
@@ -20,6 +26,10 @@ $user_id = get_current_user_id();
 $curso_id = get_post_meta($tema_id, '_blms_curso_relacionado', true);
 
 // Verificar si el usuario tiene acceso
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 // Verificar con ambos prefijos
 $ha_comprado_blms = get_user_meta($user_id, 'blms_curso_' . $curso_id, true);
 $ha_comprado_breogan = get_user_meta($user_id, 'breogan_curso_' . $curso_id, true);
@@ -28,6 +38,13 @@ $ha_comprado_curso = ($ha_comprado_blms === 'comprado' || $ha_comprado_breogan =
 $ha_acceso_tema_blms = get_user_meta($user_id, 'blms_tema_' . $tema_id, true);
 $ha_acceso_tema_breogan = get_user_meta($user_id, 'breogan_tema_' . $tema_id, true);
 $ha_acceso_tema = ($ha_acceso_tema_blms === 'acceso' || $ha_acceso_tema_breogan === 'acceso');
+<<<<<<< HEAD
+=======
+=======
+$ha_comprado_curso = get_user_meta($user_id, 'blms_curso_' . $curso_id, true) === 'comprado';
+$ha_acceso_tema = get_user_meta($user_id, 'blms_tema_' . $tema_id, true) === 'acceso';
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 
 // Verificar acceso
 if (!$ha_comprado_curso && !$ha_acceso_tema) {
@@ -187,10 +204,19 @@ if (!$ha_comprado_curso && !$ha_acceso_tema) {
     </article>
 </main>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 <style>
     h2 {
         color: black;
     }
 </style>
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 <?php get_footer(); ?>

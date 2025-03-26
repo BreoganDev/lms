@@ -1,17 +1,32 @@
 <?php
 /**
+<<<<<<< HEAD
  * Plantilla para mostrar un curso individual con diseño mejorado
+=======
+<<<<<<< HEAD
+ * Plantilla para mostrar un curso individual con diseño mejorado
+=======
+ * Plantilla para mostrar un curso individual
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
  *
  * @package Breogan LMS
  */
 
 get_header();
 
+<<<<<<< HEAD
 $current_theme = isset($_COOKIE['blms-theme']) ? $_COOKIE['blms-theme'] : 
     (isset($_COOKIE['blms_theme']) ? $_COOKIE['blms_theme'] : 'dark');
 // Obtener datos relevantes
 $curso_id = get_the_ID();
 $user_id = get_current_user_id();
+=======
+// Obtener datos relevantes
+$curso_id = get_the_ID();
+$user_id = get_current_user_id();
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 
 // Verificar con ambos prefijos para compatibilidad
 $ha_comprado_blms = get_user_meta($user_id, 'blms_curso_' . $curso_id, true);
@@ -39,6 +54,15 @@ $level_texts = array(
 // Obtener categorías (usando la taxonomía correcta)
 $categories = get_the_terms($curso_id, 'blms_categoria');
 
+<<<<<<< HEAD
+=======
+=======
+$ha_comprado = get_user_meta($user_id, 'blms_curso_' . $curso_id, true);
+$precio = get_post_meta($curso_id, '_blms_precio_curso', true);
+$es_gratuito = get_post_meta($curso_id, '_blms_curso_gratuito', true);
+
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 // Verificar mensajes de pago
 $mensaje = '';
 if (isset($_GET['blms_payment'])) {
@@ -55,6 +79,7 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
 }
 ?>
 
+<<<<<<< HEAD
 
 <main class="breogan-contenedor single-blms-curso <?php 
     echo is_user_logged_in() ? 'logged-in' : ''; 
@@ -62,6 +87,12 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
 ?>">
         <article id="post-<?php the_ID(); ?>" <?php post_class('breogan-curso'); ?>>
         <header class="breogan-curso-header">
+=======
+<main class="breogan-contenedor">
+    <article id="post-<?php the_ID(); ?>" <?php post_class('breogan-curso'); ?>>
+        <header class="breogan-curso-header">
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
             <?php if ($categories && !is_wp_error($categories)) : ?>
                 <div class="curso-categorias">
                     <?php foreach ($categories as $category) : ?>
@@ -70,6 +101,11 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
                 </div>
             <?php endif; ?>
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
             <h1 class="breogan-curso-titulo"><?php the_title(); ?></h1>
             
             <?php if ($mensaje) : ?>
@@ -77,6 +113,10 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
                     <?php echo $mensaje; ?>
                 </div>
             <?php endif; ?>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 
             <?php if ($instructor || $duration || $level) : ?>
                 <div class="curso-meta">
@@ -110,6 +150,11 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
             
             <?php if (has_post_thumbnail()) : ?>
                 <div class="breogan-curso-imagen">
@@ -118,6 +163,10 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
             <?php endif; ?>
         </header>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
         <div class="curso-content-wrapper">
             <div class="curso-main-content">
                 <div class="breogan-curso-contenido">
@@ -718,6 +767,7 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
     color: var(--blms-text-color);
 }
 
+<<<<<<< HEAD
 .breogan-curso-contenido {
     background-color: #0b122129 ;
     padding: 2rem;
@@ -728,6 +778,10 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
 
 .breogan-curso p {
     color: inherit !important;
+=======
+.breogan-curso p {
+    color: black !important;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 }
 .mensaje-exito, 
 .mensaje-error {
@@ -743,7 +797,11 @@ if (isset($_GET['blms_access']) && $_GET['blms_access'] === 'granted') {
 }
 
 h2 {
+<<<<<<< HEAD
     color: inherit !important;
+=======
+    color: black ;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 }
 
 .mensaje-error {
@@ -751,6 +809,7 @@ h2 {
     border-left: 4px solid #dc2626;
 }
 
+<<<<<<< HEAD
 body.dark-mode .breogan-contenedor,
 body.dark-mode .breogan-curso {
     background-color: #121212 !important;
@@ -765,6 +824,8 @@ body.dark-mode h2 {
     color: #ffffff !important;
 }
 
+=======
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 /* Responsive */
 @media (max-width: 768px) {
     .curso-content-wrapper {
@@ -792,6 +853,178 @@ jQuery(document).ready(function($) {
         console.log("Enviando datos de pago...");
         $.ajax({
             url: '<?php echo admin_url('admin-ajax.php'); ?>',
+<<<<<<< HEAD
+=======
+=======
+        <div class="breogan-curso-contenido">
+            <?php the_content(); ?>
+        </div>
+
+        <?php if ($ha_comprado === 'comprado') : ?>
+           <div class="breogan-curso-acceso">
+    <p class="mensaje-exito">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <?php _e('Ya tienes acceso a este curso. Explora los temas y lecciones:', 'breogan-lms'); ?>
+    </p>
+
+    <!-- Mostrar los Temas del Curso -->
+    <h2><?php _e('Temas del Curso', 'breogan-lms'); ?></h2>
+    <ul class="breogan-lista-temas">
+        <?php
+        // Obtener temas relacionados con este curso
+        $temas = get_posts([
+            'post_type'   => 'blms_tema',
+            'meta_key'    => '_blms_curso_relacionado',
+            'meta_value'  => $curso_id,
+            'numberposts' => -1,
+            'orderby'     => 'menu_order',
+            'order'       => 'ASC'
+        ]);
+
+        if ($temas) :
+            foreach ($temas as $index => $tema) : ?>
+                <li>
+                    <a href="<?php echo get_permalink($tema->ID); ?>">
+                        <div class="tema-header">
+                            <span class="tema-numero"><?php echo $index + 1; ?></span>
+                            <span class="tema-titulo"><?php echo get_the_title($tema->ID); ?></span>
+                        </div>
+                        <?php 
+                        // Obtener lecciones de este tema para mostrar contador
+                        $lecciones_count = get_posts([
+                            'post_type'   => 'blms_leccion',
+                            'meta_key'    => '_blms_tema_relacionado',
+                            'meta_value'  => $tema->ID,
+                            'numberposts' => -1,
+                            'fields'      => 'ids'
+                        ]);
+                        if (count($lecciones_count) > 0) : ?>
+                            <span class="tema-contador"><?php echo sprintf(_n('%s lección', '%s lecciones', count($lecciones_count), 'breogan-lms'), count($lecciones_count)); ?></span>
+                        <?php endif; ?>
+                    </a>
+                    
+                    <?php 
+                    // Obtener lecciones de este tema
+                    $lecciones = get_posts([
+                        'post_type'   => 'blms_leccion',
+                        'meta_key'    => '_blms_tema_relacionado',
+                        'meta_value'  => $tema->ID,
+                        'numberposts' => -1,
+                        'orderby'     => 'menu_order',
+                        'order'       => 'ASC'
+                    ]);
+                    
+                    if ($lecciones) : ?>
+                        <ul class="breogan-lista-lecciones">
+                            <?php foreach ($lecciones as $key => $leccion) : 
+                                // Verificar si la lección está completada
+                                $user_handler = new Breogan_LMS_User();
+                                $completada = $user_handler->is_lesson_completed($user_id, $leccion->ID);
+                                
+                                $clase_leccion = $completada ? 'leccion-completada' : '';
+                                ?>
+                                <li class="<?php echo $clase_leccion; ?>">
+                                    <a href="<?php echo get_permalink($leccion->ID); ?>">
+                                        <?php if ($completada) : ?>
+                                            <span class="leccion-check">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                </svg>
+                                            </span>
+                                        <?php else : ?>
+                                            <span class="leccion-number"><?php echo $key + 1; ?></span>
+                                        <?php endif; ?>
+                                        <span class="leccion-titulo"><?php echo get_the_title($leccion->ID); ?></span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach;
+        else : ?>
+            <li class="no-temas">
+                <p><?php _e('No hay temas disponibles en este curso.', 'breogan-lms'); ?></p>
+            </li>
+        <?php endif; ?>
+    </ul>
+</div>
+        <?php else : ?>
+            <div class="breogan-curso-pago">
+                <div class="breogan-curso-info-pago">
+                    <h2><?php _e('Información del Curso', 'breogan-lms'); ?></h2>
+                    
+                    <?php if ($es_gratuito == '1') : ?>
+                        <p class="breogan-curso-precio curso-gratuito">
+                            <?php _e('Curso Gratuito', 'breogan-lms'); ?>
+                        </p>
+                        <p class="breogan-curso-acceso-info">
+                            <?php _e('Puedes acceder a este curso gratuitamente.', 'breogan-lms'); ?>
+                        </p>
+                    <?php else : ?>
+                        <?php if ($precio) : ?>
+                            <p class="breogan-curso-precio">
+                                <?php _e('Precio:', 'breogan-lms'); ?> <strong><?php echo esc_html($precio); ?> €</strong>
+                            </p>
+                        <?php endif; ?>
+                        <p class="breogan-curso-acceso-info">
+                            <?php _e('Para acceder al contenido de este curso, debes comprarlo.', 'breogan-lms'); ?>
+                        </p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="breogan-botones-pago">
+                    <?php if ($es_gratuito == '1') : ?>
+                        <!-- Enlace directo para curso gratuito -->
+                        <a href="<?php echo esc_url(add_query_arg(['blms_free_access' => 'true', 'curso_id' => $curso_id, 'nonce' => wp_create_nonce('blms_free_access_nonce')], get_permalink($curso_id))); ?>" class="breogan-btn-pago breogan-btn-gratuito">
+                            <?php _e('Acceder al Curso Gratuito', 'breogan-lms'); ?>
+                        </a>
+                    <?php else : ?>
+                        <!-- Botón de Stripe -->
+                        <form id="breogan-pago-stripe" method="POST">
+                            <?php wp_nonce_field('blms_payment_nonce', 'nonce'); ?>
+                            <input type="hidden" name="action" value="blms_process_stripe_payment">
+                            <input type="hidden" name="curso_id" value="<?php echo esc_attr($curso_id); ?>">
+                            <input type="hidden" name="precio" value="<?php echo esc_attr($precio); ?>">
+                            <button type="submit" class="breogan-btn-pago breogan-stripe-btn">
+                                <?php _e('Pagar con Stripe', 'breogan-lms'); ?>
+                            </button>
+                        </form>
+
+                        <!-- Botón de PayPal -->
+                        <form id="breogan-pago-paypal" method="POST">
+                            <?php wp_nonce_field('blms_payment_nonce', 'nonce'); ?>
+                            <input type="hidden" name="action" value="blms_process_paypal_payment">
+                            <input type="hidden" name="curso_id" value="<?php echo esc_attr($curso_id); ?>">
+                            <input type="hidden" name="precio" value="<?php echo esc_attr($precio); ?>">
+                            <button type="submit" class="breogan-btn-pago breogan-paypal-btn">
+                                <?php _e('Pagar con PayPal', 'breogan-lms'); ?>
+                            </button>
+                        </form>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </article>
+</main>
+
+<script>
+jQuery(document).ready(function($) {
+    // Funciones para procesar pagos
+    function procesarPago(formId) {
+        let form = $('#' + formId);
+        let formData = new FormData(form[0]);
+
+        console.log("Enviando datos de pago...");
+
+        $.ajax({
+            url: breoganLMS.ajaxurl,
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
             type: 'POST',
             data: formData,
             processData: false,
@@ -803,6 +1036,10 @@ jQuery(document).ready(function($) {
                     console.log("Redirigiendo a:", response.data.redirect_url);
                     window.location.href = response.data.redirect_url;
                 } else {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
                     // Restaurar botón
                     button.prop('disabled', false).html(originalText);
                     
@@ -818,6 +1055,18 @@ jQuery(document).ready(function($) {
                 // Mostrar error
                 console.error("Error en la solicitud AJAX:", error, xhr.responseText);
                 alert("Error de comunicación. Por favor, inténtalo de nuevo más tarde.");
+<<<<<<< HEAD
+=======
+=======
+                    console.error("Error en el pago:", response.data ? response.data.message : "Error desconocido");
+                    alert("Error en el pago: " + (response.data ? response.data.message : "Error desconocido"));
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", error);
+                alert("Hubo un error en la solicitud. Por favor, intenta de nuevo.");
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
             }
         });
     }
@@ -833,4 +1082,14 @@ jQuery(document).ready(function($) {
         procesarPago('breogan-pago-paypal');
     });
 });
+<<<<<<< HEAD
 </script>
+=======
+<<<<<<< HEAD
+</script>
+=======
+</script>
+
+<?php get_footer(); ?>
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1

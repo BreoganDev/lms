@@ -69,6 +69,14 @@ get_header();
     <?php endif; ?>
 </main>
 
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 <?php get_footer(); ?>

@@ -46,6 +46,7 @@ class Breogan_LMS_Templates {
         }
         
         // Plantillas de archivo
+<<<<<<< HEAD
        if (is_post_type_archive('blms_curso') || is_post_type_archive('cursos')) {
         $new_template = $this->locate_template('archive-blms-curso.php');
         if ($new_template) {
@@ -56,6 +57,18 @@ class Breogan_LMS_Templates {
     return $template;
 }
     
+=======
+        if (is_post_type_archive('blms_curso')) {
+            $new_template = $this->locate_template('archive-blms-curso.php');
+            if ($new_template) {
+                return $new_template;
+            }
+        }
+        
+        return $template;
+    }
+    
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     /**
      * Localizar una plantilla
      * 

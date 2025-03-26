@@ -113,6 +113,10 @@ class Breogan_LMS_User {
      * @param int $leccion_id ID de la lección
      * @return boolean True si tiene acceso, false si no
      */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
    public function user_has_access_to_lesson($user_id, $leccion_id) {
     // Obtener tema relacionado
     $tema_id = get_post_meta($leccion_id, '_blms_tema_relacionado', true);
@@ -158,6 +162,45 @@ class Breogan_LMS_User {
     return false;
 }
     
+<<<<<<< HEAD
+=======
+=======
+    public function user_has_access_to_lesson($user_id, $leccion_id) {
+        // Obtener tema relacionado
+        $tema_id = get_post_meta($leccion_id, '_blms_tema_relacionado', true);
+        if (!$tema_id) {
+            return false;
+        }
+        
+        // Obtener curso relacionado
+        $curso_id = get_post_meta($tema_id, '_blms_curso_relacionado', true);
+        if (!$curso_id) {
+            return false;
+        }
+        
+        // Verificar si el usuario ha comprado el curso
+        $ha_comprado_curso = get_user_meta($user_id, 'blms_curso_' . $curso_id, true);
+        if ($ha_comprado_curso) {
+            return true;
+        }
+        
+        // Verificar si el usuario tiene acceso al tema
+        $ha_acceso_tema = get_user_meta($user_id, 'blms_tema_' . $tema_id, true);
+        if ($ha_acceso_tema) {
+            return true;
+        }
+        
+        // Verificar si el usuario tiene acceso directo a la lección
+        $ha_acceso_leccion = get_user_meta($user_id, 'blms_leccion_' . $leccion_id, true);
+        if ($ha_acceso_leccion) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     /**
      * Verificar si la lección está completada
      * 
@@ -166,10 +209,22 @@ class Breogan_LMS_User {
      * @return boolean True si está completada, false si no
      */
     public function is_lesson_completed($user_id, $leccion_id) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     $completed_blms = get_user_meta($user_id, 'blms_leccion_completada_' . $leccion_id, true);
     $completed_breogan = get_user_meta($user_id, 'breogan_leccion_' . $leccion_id . '_completada', true);
     return !empty($completed_blms) || !empty($completed_breogan);
 }
+<<<<<<< HEAD
+=======
+=======
+        $completed = get_user_meta($user_id, 'blms_leccion_completada_' . $leccion_id, true);
+        return !empty($completed);
+    }
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     
     /**
      * Obtener progreso del curso

@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
      * Redirigir intentos de acceso a wp-login.php
      */
     public function login_redirect() {
+<<<<<<< HEAD
     // No aplicar redirecciones para administradores en el admin
     if (current_user_can('administrator') && is_admin()) {
         return;
@@ -160,6 +161,17 @@ document.addEventListener('DOMContentLoaded', function() {
         exit;
     }
 }
+=======
+        $login_page = home_url('/iniciar-sesion');
+        $current_page = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+
+        // Redirigir wp-login.php a la página de login personalizada
+        if (strpos($current_page, 'wp-login.php') !== false) {
+            wp_redirect($login_page);
+            exit;
+        }
+    }
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     
     /**
      * Añadir estilos para el formulario de login

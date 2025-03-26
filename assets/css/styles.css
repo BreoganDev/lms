@@ -137,7 +137,11 @@
 
 /* Contenido del curso */
 .breogan-curso-contenido {
+<<<<<<< HEAD
     background-color: #0b122129;
+=======
+    background-color: var(--breogan-white);
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     padding: 2rem;
     border-radius: var(--breogan-radius);
     margin-bottom: 2rem;
@@ -324,7 +328,10 @@
     margin-right: 0.5rem;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 /* Botones de pago */
 .breogan-botones-pago {
     display: flex;
@@ -921,6 +928,10 @@ body a[href*="curso"].breogan-btn-link .icon {
     margin-right: 8px !important;
     stroke-width: 2 !important;
     stroke: currentColor !important;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 }
 
 .btn-pago.paypal-btn {
@@ -1433,6 +1444,7 @@ body.dark-mode {
 
 .breogan-curso p {
     color: black !important;
+<<<<<<< HEAD
 }
 
 /* Modo Oscuro Forzado */
@@ -1523,3 +1535,8 @@ body.dark-mode .single-blms_curso .breogan-contenedor,
     width: 0%;
     transition: width 0.5s ease;
 }
+=======
+=======
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+}
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1

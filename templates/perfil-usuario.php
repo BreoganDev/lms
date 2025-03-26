@@ -1,12 +1,33 @@
 <?php
+<<<<<<< HEAD
 // Evitar acceso si el usuario no está logueado
 if (!is_user_logged_in()) {
     wp_redirect(wp_login_url(get_permalink()));
+=======
+<<<<<<< HEAD
+/**
+ * Template para la página de perfil de usuario
+ * Diseño moderno y profesional para Breogan LMS
+ */
+
+// Evitar acceso si el usuario no está logueado
+if (!is_user_logged_in()) {
+    wp_redirect(wp_login_url(get_permalink()));
+=======
+// Evitar acceso si el usuario no está logueado
+if (!is_user_logged_in()) {
+    wp_redirect(wp_login_url());
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     exit;
 }
 
 get_header();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 // Obtener información del usuario actual
 $user_id = get_current_user_id();
 $user = get_userdata($user_id);
@@ -24,6 +45,7 @@ $avatar = get_avatar($user_id, 96, '', $display_name, array('class' => 'perfil-a
     <div class="perfil-estadisticas">
         <?php
         // Obtener estadísticas del usuario
+<<<<<<< HEAD
         global $wpdb;
         
         // Contar cursos comprados
@@ -60,6 +82,37 @@ $avatar = get_avatar($user_id, 96, '', $display_name, array('class' => 'perfil-a
         
         // Tiempo como miembro
         $tiempo_miembro = human_time_diff(strtotime($user->user_registered), current_time('timestamp'));
+=======
+        $cursos_comprados = 0;
+        $cursos_completados = 0;
+        $lecciones_completadas = 0;
+        
+        // Contar cursos comprados
+        global $wpdb;
+        $cursos_meta = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT meta_key FROM {$wpdb->usermeta} 
+                 WHERE user_id = %d AND (meta_key LIKE %s OR meta_key LIKE %s) AND meta_value = 'comprado'",
+                $user_id,
+                'blms_curso_%',
+                'breogan_curso_%'
+            )
+        );
+        
+        $cursos_comprados = count($cursos_meta);
+        
+        // Contar lecciones completadas (aproximación)
+        $lecciones_meta = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT meta_key FROM {$wpdb->usermeta} 
+                 WHERE user_id = %d AND meta_key LIKE %s",
+                $user_id,
+                'blms_leccion_completada_%'
+            )
+        );
+        
+        $lecciones_completadas = count($lecciones_meta);
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
         ?>
         
         <div class="estadistica-card">
@@ -73,7 +126,11 @@ $avatar = get_avatar($user_id, 96, '', $display_name, array('class' => 'perfil-a
         </div>
         
         <div class="estadistica-card">
+<<<<<<< HEAD
             <div class="estadistica-valor"><?php echo $tiempo_miembro; ?></div>
+=======
+            <div class="estadistica-valor"><?php echo human_time_diff(strtotime($user->user_registered), current_time('timestamp')); ?></div>
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
             <div class="estadistica-label"><?php _e('Miembro Desde', 'breogan-lms'); ?></div>
         </div>
     </div>
@@ -107,6 +164,14 @@ $avatar = get_avatar($user_id, 96, '', $display_name, array('class' => 'perfil-a
                     </a>
                 </div>
                 <div class="info-item">
+<<<<<<< HEAD
+=======
+                    <a href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" class="btn-acceder">
+                        <?php _e('Mi Cuenta', 'breogan-lms'); ?>
+                    </a>
+                </div>
+                <div class="info-item">
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
                     <a href="<?php echo wp_lostpassword_url(); ?>" class="btn-acceder">
                         <?php _e('Cambiar Contraseña', 'breogan-lms'); ?>
                     </a>
@@ -115,6 +180,7 @@ $avatar = get_avatar($user_id, 96, '', $display_name, array('class' => 'perfil-a
         </div>
     </div>
     
+<<<<<<< HEAD
     <!-- NUEVA SECCIÓN: Progreso Detallado de Cursos -->
 <?php
 // Código para mostrar la tabla de progreso
@@ -218,11 +284,14 @@ foreach ($cursos as $curso) {
 echo '</tbody></table></div>';
 ?>
     
+=======
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     <!-- Sección de cursos -->
     <div class="breogan-perfil-seccion">
         <h2><?php _e('Mis Cursos', 'breogan-lms'); ?></h2>
         
         <?php
+<<<<<<< HEAD
         // Obtener cursos comprados por el usuario
         // Identificar IDs de cursos a partir de los metadatos
         $curso_ids = array();
@@ -242,6 +311,118 @@ echo '</tbody></table></div>';
         // Si no hay cursos, mostrar mensaje
         if (empty($curso_ids)) {
             ?>
+=======
+        // Obtener cursos del usuario
+        $cursos_en_progreso = array();
+        
+        // Obtener todos los cursos
+        $cursos = get_posts(array(
+            'post_type'   => 'cursos', // Ajustar según el post type correcto
+            'numberposts' => -1,
+            'orderby'     => 'title',
+            'order'       => 'ASC'
+        ));
+        
+        // Alternativamente, verifica también el post type 'blms_curso'
+        $cursos_blms = get_posts(array(
+            'post_type'   => 'blms_curso',
+            'numberposts' => -1,
+            'orderby'     => 'title',
+            'order'       => 'ASC'
+        ));
+        
+        // Combinar ambos arrays
+        $cursos = array_merge($cursos, $cursos_blms);
+        
+        // Filtrar solo los cursos comprados
+        foreach ($cursos as $curso) {
+            $curso_id = $curso->ID;
+            
+            // Verificar ambos prefijos
+            $ha_comprado_blms = get_user_meta($user_id, 'blms_curso_' . $curso_id, true);
+            $ha_comprado_breogan = get_user_meta($user_id, 'breogan_curso_' . $curso_id, true);
+            
+            if ($ha_comprado_blms === 'comprado' || $ha_comprado_breogan === 'comprado') {
+                // Calcular progreso (puedes ajustar esta lógica según tus necesidades)
+                $temas = get_posts(array(
+                    'post_type'   => 'blms_tema',
+                    'meta_key'    => '_blms_curso_relacionado',
+                    'meta_value'  => $curso_id,
+                    'numberposts' => -1
+                ));
+                
+                $total_lecciones = 0;
+                $lecciones_completadas = 0;
+                
+                foreach ($temas as $tema) {
+                    $lecciones = get_posts(array(
+                        'post_type'   => 'blms_leccion',
+                        'meta_key'    => '_blms_tema_relacionado',
+                        'meta_value'  => $tema->ID,
+                        'numberposts' => -1
+                    ));
+                    
+                    foreach ($lecciones as $leccion) {
+                        $total_lecciones++;
+                        if (get_user_meta($user_id, 'blms_leccion_completada_' . $leccion->ID, true)) {
+                            $lecciones_completadas++;
+                        }
+                    }
+                }
+                
+                $porcentaje = ($total_lecciones > 0) ? round(($lecciones_completadas / $total_lecciones) * 100) : 0;
+                
+                $cursos_en_progreso[] = array(
+                    'curso' => $curso,
+                    'total_lecciones' => $total_lecciones,
+                    'lecciones_completadas' => $lecciones_completadas,
+                    'porcentaje' => $porcentaje
+                );
+            }
+        }
+        
+        if (!empty($cursos_en_progreso)) {
+        ?>
+            <ul class="lista-cursos">
+                <?php foreach ($cursos_en_progreso as $data) { 
+                    $estado_clase = ($data['porcentaje'] >= 100) ? 'estado-completado' : (($data['porcentaje'] > 0) ? 'estado-activo' : 'estado-pendiente');
+                    $estado_texto = ($data['porcentaje'] >= 100) ? __('Completado', 'breogan-lms') : (($data['porcentaje'] > 0) ? __('En progreso', 'breogan-lms') : __('Pendiente', 'breogan-lms'));
+                ?>
+                    <li>
+                        <h3>
+                            <a href="<?php echo get_permalink($data['curso']->ID); ?>"><?php echo get_the_title($data['curso']->ID); ?></a>
+                        </h3>
+                        <div class="curso-contenido">
+                            <div class="estado-indicador <?php echo $estado_clase; ?>">
+                                <?php echo $estado_texto; ?>
+                            </div>
+                            
+                            <p><?php _e('Progreso:', 'breogan-lms'); ?> <strong><?php echo $data['porcentaje']; ?>%</strong></p>
+                            
+                            <div class="progreso-barra">
+                                <div style="width: <?php echo $data['porcentaje']; ?>%"></div>
+                            </div>
+                            
+                            <p class="lecciones-info">
+                                <?php echo sprintf(__('%d de %d lecciones completadas', 'breogan-lms'), 
+                                    $data['lecciones_completadas'], $data['total_lecciones']); ?>
+                            </p>
+                            
+                            <div class="curso-acciones">
+                                <a href="<?php echo get_permalink($data['curso']->ID); ?>" class="btn-acceder">
+                                    <?php _e('Continuar', 'breogan-lms'); ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                <?php } ?>
+            </ul>
+        <?php } else { ?>
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
             <div class="no-cursos">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -249,6 +430,7 @@ echo '</tbody></table></div>';
                 </svg>
                 <h3><?php _e('Aún no tienes cursos', 'breogan-lms'); ?></h3>
                 <p><?php _e('Explora nuestro catálogo y empieza a aprender hoy mismo.', 'breogan-lms'); ?></p>
+<<<<<<< HEAD
                 <?php 
                 // Determinar la URL correcta para el catálogo de cursos
                 $archive_link = '';
@@ -425,3 +607,104 @@ echo '</tbody></table></div>';
 </main>
 
 <?php get_footer(); ?>
+=======
+                <a href="<?php echo get_post_type_archive_link('cursos'); ?>" class="btn-explorar">
+                    <?php _e('Explorar Cursos', 'breogan-lms'); ?>
+                </a>
+            </div>
+        <?php } ?>
+    </div>
+</main>
+
+<?php get_footer(); ?>
+=======
+$user_id = get_current_user_id();
+?>
+
+<main class="contenedor seccion">
+    <h1 class="texto-center texto-primary">Tu Progreso</h1>
+
+  
+
+    <h2>Tus Cursos en Progreso</h2>
+    <ul class="lista-cursos">
+        <?php
+        // Obtener todos los cursos en los que el usuario ha completado al menos una lección
+        $cursos = get_posts(array(
+<<<<<<< HEAD
+            'post_type'   => 'breogan_cursos',
+=======
+            'post_type'   => 'cursos',
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+            'numberposts' => -1
+        ));
+
+        $cursos_en_progreso = [];
+
+        foreach ($cursos as $curso) {
+            $curso_id = $curso->ID;
+
+            // Obtener todas las lecciones de los temas de este curso
+            $temas = get_posts(array(
+<<<<<<< HEAD
+                'post_type'   => 'breogan_temas',
+=======
+                'post_type'   => 'temas',
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+                'meta_key'    => '_curso_relacionado',
+                'meta_value'  => $curso_id,
+                'numberposts' => -1
+            ));
+
+            $total_lecciones = 0;
+            $lecciones_completadas = 0;
+
+            foreach ($temas as $tema) {
+                $tema_id = $tema->ID;
+
+                $lecciones = get_posts(array(
+<<<<<<< HEAD
+                    'post_type'   => 'breogan_lecciones',
+=======
+                    'post_type'   => 'lecciones',
+>>>>>>> 12ee31a27decda5eba9c768c4e10372ecba265b3
+                    'meta_key'    => '_tema_relacionado',
+                    'meta_value'  => $tema_id,
+                    'numberposts' => -1
+                ));
+
+                foreach ($lecciones as $leccion) {
+                    $total_lecciones++;
+                    if (get_user_meta($user_id, 'breogan_leccion_' . $leccion->ID, true)) {
+                        $lecciones_completadas++;
+                    }
+                }
+            }
+
+            if ($total_lecciones > 0 && $lecciones_completadas > 0) {
+                $porcentaje = round(($lecciones_completadas / $total_lecciones) * 100);
+                $cursos_en_progreso[] = [
+                    'curso' => $curso,
+                    'porcentaje' => $porcentaje
+                ];
+            }
+        }
+
+        if (!empty($cursos_en_progreso)) {
+            foreach ($cursos_en_progreso as $data) {
+                echo '<li>';
+                echo '<h3><a href="' . get_permalink($data['curso']->ID) . '">' . get_the_title($data['curso']->ID) . '</a></h3>';
+                echo '<p>Progreso: ' . $data['porcentaje'] . '% completado</p>';
+                echo '<div class="progreso-barra"><div style="width:' . $data['porcentaje'] . '%"></div></div>';
+                echo '</li>';
+            }
+        } else {
+            echo '<p>No tienes cursos en progreso.</p>';
+        }
+        ?>
+    </ul>
+</main>
+
+<?php get_footer(); ?>
+>>>>>>> 49d2a8a4a15c13644e33921ea14a3171b7b0e858
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1

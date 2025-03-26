@@ -10,7 +10,10 @@ function breogan_lms_instructores_shortcode($atts) {
         'order' => 'ASC',
         'mostrar_cursos' => 'no',
         'columnas' => 3,
+<<<<<<< HEAD
         'estilo' => 'moderno', // Nuevo atributo para diferentes estilos
+=======
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     ), $atts);
     
     // Convertir a valores adecuados
@@ -33,6 +36,7 @@ function breogan_lms_instructores_shortcode($atts) {
         return '<p>' . __('No hay instructores disponibles.', 'breogan-lms') . '</p>';
     }
     
+<<<<<<< HEAD
     // Generar un ID único para este conjunto de instructores
     $unique_id = 'instructores-' . uniqid();
     
@@ -40,6 +44,12 @@ function breogan_lms_instructores_shortcode($atts) {
     ob_start();
     ?>
     <div id="<?php echo esc_attr($unique_id); ?>" class="breogan-instructores-grid columnas-<?php echo esc_attr($columnas); ?>">
+=======
+    // Comenzar a capturar la salida
+    ob_start();
+    ?>
+    <div class="breogan-instructores-grid columnas-<?php echo esc_attr($columnas); ?>">
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
         <?php foreach ($instructores as $instructor) : 
             $instructor_id = $instructor->ID;
             $job_title = get_post_meta($instructor_id, '_instructor_job_title', true);
@@ -121,6 +131,7 @@ function breogan_lms_instructores_shortcode($atts) {
     </div>
     
     <style>
+<<<<<<< HEAD
     /* Estilos personalizados para este grupo específico de instructores */
     #<?php echo $unique_id; ?> {
         --accent-color: <?php echo apply_filters('breogan_instructor_accent_color', '#6366F1'); ?>;
@@ -143,6 +154,9 @@ function breogan_lms_instructores_shortcode($atts) {
             // Aquí incluirías el CSS que te proporcioné antes
             echo '<style id="breogan-instructor-shortcode-styles">
             .breogan-instructores-grid {
+=======
+   .breogan-instructores-grid {
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     display: grid;
     gap: 30px;
     margin-top: 20px;
@@ -166,20 +180,27 @@ function breogan_lms_instructores_shortcode($atts) {
 }
 
 .instructor-shortcode-card {
+<<<<<<< HEAD
     background: var(--card-bg, #ffffff);
     color: var(--card-text, #333333);
+=======
+    background: white;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .instructor-shortcode-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+=======
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 }
 
 .instructor-header {
@@ -200,14 +221,21 @@ function breogan_lms_instructores_shortcode($atts) {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
+<<<<<<< HEAD
     border: 3px solid var(--accent-color, #6366F1);
+=======
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 }
 
 .instructor-imagen-placeholder {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+<<<<<<< HEAD
     background-color: var(--accent-color, #6366F1);
+=======
+    background-color: #6366F1;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     color: white;
     display: flex;
     align-items: center;
@@ -219,6 +247,7 @@ function breogan_lms_instructores_shortcode($atts) {
 .instructor-nombre {
     margin: 10px 0 5px;
     font-size: 1.2rem;
+<<<<<<< HEAD
     color: var(--heading-color, #1a202c);
     font-weight: 600; /* Añadimos negrita */
 }
@@ -235,22 +264,38 @@ function breogan_lms_instructores_shortcode($atts) {
 
 .instructor-titulo {
     color: var(--secondary-text, #6b7280);
+=======
+    color: #333;
+}
+
+.instructor-titulo {
+    color: #6b7280;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     margin-bottom: 15px;
     font-size: 0.9rem;
 }
 
+<<<<<<< HEAD
 body .instructor-shortcode-card .instructor-extracto {
     color: var(--extract-text, #2d3748) !important;
 }
 
 body .instructor-shortcode-card .instructor-nombre a {
     color: var(--heading-color, #1a202c) !important;
+=======
+.instructor-extracto {
+    flex-grow: 1;
+    margin-bottom: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 }
 
 .ver-instructor {
     display: inline-block;
     text-align: center;
     padding: 8px 15px;
+<<<<<<< HEAD
     background-color: var(--accent-color, #6366F1);
     color: white !important;
     text-decoration: none;
@@ -267,12 +312,32 @@ body .instructor-shortcode-card .instructor-nombre a {
 
 .instructor-cursos-mini {
     border-top: 1px solid var(--border-color, #e5e7eb);
+=======
+    background-color: #6366F1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.ver-instructor:hover {
+    background-color: #4F46E5;
+}
+
+.instructor-cursos-mini {
+    border-top: 1px solid #e5e7eb;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     padding-top: 15px;
 }
 
 .instructor-cursos-mini h4 {
     margin: 0 0 10px;
+<<<<<<< HEAD
     color: var(--heading-color, #374151);
+=======
+    color: #374151;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     font-size: 1rem;
 }
 
@@ -284,21 +349,33 @@ body .instructor-shortcode-card .instructor-nombre a {
 
 .instructor-cursos-mini .cursos-lista li {
     margin-bottom: 5px;
+<<<<<<< HEAD
     padding: 3px 0;
 }
 
 .instructor-cursos-mini .cursos-lista a {
     color: var(--accent-color, #6366F1);
+=======
+}
+
+.instructor-cursos-mini .cursos-lista a {
+    color: #6366F1;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .instructor-cursos-mini .cursos-lista a:hover {
+<<<<<<< HEAD
     color: var(--accent-hover, #4F46E5);
+=======
+    color: #4F46E5;
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
     text-decoration: underline;
 }
 
 .instructor-cursos-mini .ver-mas a {
+<<<<<<< HEAD
     color: var(--secondary-text, #6b7280);
     font-style: italic;
 }
@@ -341,6 +418,12 @@ body.dark-mode, .dark-mode {
     }
 }
 
+=======
+    color: #6b7280;
+    font-style: italic;
+}
+
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .breogan-instructores-grid {
@@ -355,6 +438,7 @@ body.dark-mode, .dark-mode {
         gap: 15px;
     }
 }
+<<<<<<< HEAD
 
 .page-content {
     background-color: #ffffff12;
@@ -433,4 +517,8 @@ body:not(.dark-mode) .instructor-shortcode-card,
 // Asegúrate de registrar el shortcode
 if (!shortcode_exists('breogan_lms_instructores')) {
     add_shortcode('breogan_lms_instructores', 'breogan_lms_instructores_shortcode');
+=======
+<?php
+    return ob_get_clean();
+>>>>>>> 3304e421caae91f58c934cbba7438d218e5a9df1
 }
